@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Go to the project directory (/my-app) and run to get started:
+Go to the project directory and run to get started:
 
 ### `npm install`
 
@@ -12,7 +12,7 @@ Installs all the dependencies for the project
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
