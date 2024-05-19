@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { EntryStore } from "@entryscape/entrystore-js";
-import { Grid, Container, Typography } from "@mui/material";
+import {
+  Grid,
+  Container,
+  Typography,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import ArtListView from "./ArtListView";
 
 function ArtListController() {
@@ -8,7 +14,7 @@ function ArtListController() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetching and Parsing the RDF/XML Data obtained from the artist Resource URI
+  // Fetching and parsing the XML Data obtained from the artist Resource URI
   const getArtistName = (artistResourceURI) => {
     return fetch(artistResourceURI)
       .then((response) => response.text())
@@ -69,15 +75,30 @@ function ArtListController() {
     fetchArtistData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading)
+    return (
+      <Box
+        sx={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  if (error) return <Box>Error: {error.message}</Box>;
 
   return (
     <Container>
-      <Typography
-        variant="h2"
-        sx={{ textAlign: "center", margin: "2%" }}
-      >
+      <Typography variant="h2" sx={{ textAlign: "center", margin: "2%" }}>
         Artists And Their Creations
       </Typography>
       <Grid container spacing={4}>
